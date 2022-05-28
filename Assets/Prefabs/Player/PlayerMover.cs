@@ -5,20 +5,26 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] float speed;
-    Vector3 oldPosition;
-    Rigidbody2D rigidbody2D;
+    Vector3 startPosition;
+    bool endLevel;
+    new Rigidbody2D rigidbody2D;
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
-        speed = 6;
+        startPosition = transform.position;
+        endLevel = false;
     }
 
     void Update()
     {
-        oldPosition = transform.position;
+        Move();
+        if(Input.GetKeyDown(KeyCode.R) && endLevel) Reset();
+    }
+
+    void Move(){
         int verticalMove=0;
         int horizontalMove=0;
         if(Input.GetKey(KeyCode.W)) verticalMove++;
@@ -29,13 +35,20 @@ public class PlayerMover : MonoBehaviour
         Vector2 force = new Vector2(horizontalMove, verticalMove);
         rigidbody2D.velocity = force.normalized*speed;
     }
-
-    /*
-    void OnCollisionEnter2D(Collision2D other) {        
-        if(other.gameObject.tag == "Wall")
-            transform.position = oldPosition;
+    
+    void OnTriggerEnter2D(Collider2D other) {       
+        if(other.gameObject.tag != "End") return;
+        
+        Debug.Log("Arrived at End position!");
+        rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        endLevel = true;
     }
-    */
+
+    void Reset(){           // Cremascoli function
+        rigidbody2D.constraints = RigidbodyConstraints2D.None;
+        rigidbody2D.MovePosition(startPosition);
+        endLevel = false;
+    }
 
 
 }
