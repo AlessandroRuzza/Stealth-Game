@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -50,6 +50,18 @@
         "Obj/":true,
         "ProjectSettings/":true,
         "temp/":true,
-        "Temp/":true
+        "Temp/":true,
+        "**/*.phys*":true,          // user-made
+        "**/*.sln*":true,           // user-made
+        "**/*.controller*":true,           // user-made
+        "**/*.anim*":true,           // user-made
+        //"**/*.csproj*":true,        // user-made
+        "Assets/Animations/":true,  // user-made
+        "Assets/Scenes/":true,      // user-made
+        "Assets/Textures/":true,      // user-made
+        "Assets/Imported_Packs/":true,           // user-made
+        "Logs/":true,               // user-made
+        "Packages/":true,           // user-made
+        "UserSettings/":true       // user-made
     }
 }
