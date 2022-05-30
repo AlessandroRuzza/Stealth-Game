@@ -1322,6 +1322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastLength: 5
+  coneAngle: 15
+  rayCount: 10
+  debug: 1
 --- !u!4 &709618581
 Transform:
   m_ObjectHideFlags: 0
@@ -1329,15 +1332,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709618578}
-  m_LocalRotation: {x: -0, y: -0, z: 0.99999875, w: -0.0016162316}
-  m_LocalPosition: {x: 7.8, y: 6.25, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 10.85, y: 7.38, z: 0}
   m_LocalScale: {x: 1.4596, y: 1.4596, z: 1.4596}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961728972}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!23 &709618582
 MeshRenderer:
   m_ObjectHideFlags: 0

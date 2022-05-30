@@ -6,12 +6,13 @@ using UnityEngine;
 public class EnemyCone : MonoBehaviour
 {
     [SerializeField] int raycastLength = 5;
-    float degIncrement = 0.5f;
-    [SerializeField] static float coneAngle = 15f;
-    static int rayCount = 10;
+    [SerializeField] float coneAngle = 15f;
+    [SerializeField] int rayCount = 10;
+    [SerializeField] bool debug = true;
     //float currentAngle = 0;
-    float angleIncrease = coneAngle / rayCount;
-    Vector3 origin = Vector3.zero;
+    float angleIncrease {
+        get{ return 2*coneAngle / rayCount; }
+    } 
 
     void Awake()
     {
@@ -29,47 +30,49 @@ public class EnemyCone : MonoBehaviour
         Mesh mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
+        Vector2 currentPosition = transform.position;
         Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[rayCount + 2];
         int[] triangles = new int[rayCount * 3];
 
-        vertices[0] = origin;
+        vertices[0] = Vector3.zero;
 
         int vertexIndex = 1;
-        int traingleIndex = 0;
+        int triangleIndex = 0;
+        float angle = coneAngle;
         for (int i = 0; i <= rayCount; i++)
         {
-            //Vector2 direction = Quaternion.Euler(0,0,i)*transform.up;
+            Vector2 direction = Quaternion.Euler(0,0,angle)*transform.up;
             
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(coneAngle), raycastLength);
-            Vector3 vertex;// = CastRay(direction);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(currentPosition, direction, raycastLength);
+            if(debug) Debug.DrawRay(currentPosition, direction*raycastLength, Color.white, 0.01f);
+            Vector3 vertex;
             
             if(raycastHit2D.collider != null){
                 //Obstacle Hit
                 if(raycastHit2D.collider.tag == "Player"){
-                Debug.Log("Player found!"); 
+                    Debug.Log("Player found!"); 
                 }
                 Debug.Log("Object hit!!");
-                vertex = raycastHit2D.point;
+                vertex = GetVectorFromAngle(angle) * raycastHit2D.distance;
             } else {
                 //Did not hit obstacle
                 Debug.Log("No object hit");
-                vertex = origin + GetVectorFromAngle(coneAngle) * raycastLength;
+                vertex = GetVectorFromAngle(angle) * raycastLength;
             }
-
 
             vertices[vertexIndex] = vertex;
 
             if(i>0){
-                triangles[traingleIndex] = 0;
-                triangles[traingleIndex + 1] = vertexIndex -1;
-                triangles[traingleIndex + 2] = vertexIndex;
+                triangles[triangleIndex] = 0;
+                triangles[triangleIndex + 1] = vertexIndex -1;
+                triangles[triangleIndex + 2] = vertexIndex;
 
-                traingleIndex += 3;
+                triangleIndex += 3;
             }
             vertexIndex++;
 
-            coneAngle -= angleIncrease;
+            angle -= angleIncrease;
         }
 
         mesh.vertices = vertices;
@@ -81,7 +84,7 @@ public class EnemyCone : MonoBehaviour
             Vector2 direction = Quaternion.Euler(0,0,deg)*transform.up;
             direction = direction.normalized;
             float distance = CastRay(direction);
-            //Debug.DrawRay(transform.position, direction*distance, Color.white, 0.01f);
+            Debug.DrawRay(transform.position, direction*distance, Color.white, 0.01f);
         }*/
     }
 
@@ -98,8 +101,10 @@ public class EnemyCone : MonoBehaviour
     }
 
     Vector3 GetVectorFromAngle(float angle){
-        float angleRad = angle * (Mathf.PI/180f);
-        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+        //float angleRad = angle * Mathf.Deg2Rad;
+        //return new Vector3(Mathf.Sin(angleRad), Mathf.Cos(angleRad)).normalized;
+        //return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));  
+        return Quaternion.Euler(0,0,angle) * Vector3.up;
     }
 
 
