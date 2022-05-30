@@ -12,6 +12,7 @@
 
 #User-added custom ignores
 /[Aa]ssets/Imported_Packs/
+/[Aa]ssets/TextMesh Pro/
 
 
 # MemoryCaptures can get excessive in size.
