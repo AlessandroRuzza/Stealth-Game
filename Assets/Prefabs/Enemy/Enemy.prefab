@@ -219,8 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLength: 5
   coneAngle: 15
-  rayCount: 10
-  debug: 0
+  rayCount: 40
+  debugLog: 0
+  debugRay: 0
 --- !u!114 &1985462688609083693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,8 +235,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 0}
-  speed: 4
-  rotationSpeed: 2
+  speed: 3
+  movePrecision: 1
+  rotationSpeed: 4
+  anglePrecision: 1.5
+  minAngleThreshold: 1
 --- !u!33 &3535306984944098947
 MeshFilter:
   m_ObjectHideFlags: 0

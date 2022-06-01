@@ -8,7 +8,8 @@ public class EnemyCone : MonoBehaviour
     [SerializeField] int raycastLength = 5;
     [SerializeField] float coneAngle = 15f;
     [SerializeField] int rayCount = 10;
-    [SerializeField] bool debug = true;
+    [SerializeField] bool debugLog;
+    [SerializeField] bool debugRay;
     //float currentAngle = 0;
     float angleIncrease {
         get{ return 2*coneAngle / rayCount; }
@@ -36,19 +37,19 @@ public class EnemyCone : MonoBehaviour
             Vector3 vertexDirection = Quaternion.Euler(0,0,angle) * Vector3.up;
             
             RaycastHit2D raycastHit2D = Physics2D.Raycast(currentPosition, rayDirection, raycastLength);
-            if(debug) Debug.DrawRay(currentPosition, rayDirection*raycastLength, Color.white, 0.01f);
+            if(debugRay) Debug.DrawRay(currentPosition, rayDirection*raycastLength, Color.white, 0.01f);
             Vector3 vertex;
             
             if(raycastHit2D.collider != null){
                 //Obstacle Hit
                 if(raycastHit2D.collider.tag == "Player"){
-                    if(debug) Debug.Log("Player found!"); 
+                    if(debugLog) Debug.Log("Player found!"); 
                 }
-                if(debug) Debug.Log("Object hit!!");
+                if(debugLog) Debug.Log("Object hit!!");
                 vertex = vertexDirection * raycastHit2D.distance;
             } else {
                 //Did not hit obstacle
-                if(debug) Debug.Log("No object hit");
+                if(debugLog) Debug.Log("No object hit");
                 vertex = vertexDirection * raycastLength;
             }
 
