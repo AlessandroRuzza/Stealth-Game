@@ -238,8 +238,10 @@ MonoBehaviour:
   speed: 3
   movePrecision: 1
   rotationSpeed: 4
+  turnClockwise: 1
   anglePrecision: 1.5
   minAngleThreshold: 1
+  offset: 0
 --- !u!33 &3535306984944098947
 MeshFilter:
   m_ObjectHideFlags: 0
