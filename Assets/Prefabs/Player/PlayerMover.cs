@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] float speed;
     Vector3 startPosition;
     Vector2 force;
-    bool endLevel;
     new Rigidbody2D rigidbody2D;
+    Player player;
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
     void Start()
     {
         startPosition = transform.position;
-        endLevel = false;
     }
 
     void Update()
     {
         UpdateForce();
-        if(Input.GetKeyDown(KeyCode.R) && endLevel) Reset();
     }
 
     void FixedUpdate() {    // it's better to do physics in "FixedUpdate"
@@ -43,16 +43,24 @@ public class PlayerMover : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {       
         if(other.gameObject.tag != "End") return;
         
-        Debug.Log("Arrived at End position!");
-        rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-        endLevel = true;
+
+        if (player.canFinishLevel)
+        {
+            Debug.Log("Arrived at End position!");
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            player.LevelComplete();
+        }
+        else
+        {
+            Debug.Log("Missing some coins...");
+        }
     }
 
-    void Reset(){           // Cremascoli function
-        rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rigidbody2D.MovePosition(startPosition);
-        endLevel = false;
-    }
+    //public void Reset(){           // Cremascoli function
+    //    rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+    //    rigidbody2D.MovePosition(startPosition);
+    //    endLevel = false;
+    //}
 
 
 }

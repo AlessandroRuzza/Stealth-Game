@@ -15,4 +15,14 @@ public class Coin : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player player;
+        if(collision.TryGetComponent<Player>(out player))
+        {
+            player.PickUpCoin();
+            Destroy(gameObject);
+        }
+    }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyCone : MonoBehaviour
 {
+    MeshFilter meshFilter;
+    bool stopDrawing;
+
     [SerializeField] int raycastLength = 5;
     [SerializeField] float coneAngle = 15f;
     [SerializeField] int rayCount = 10;
@@ -13,13 +16,21 @@ public class EnemyCone : MonoBehaviour
     //float currentAngle = 0;
     float angleIncrease {
         get{ return 2*coneAngle / rayCount; }
-    } 
+    }
+
+    private void Awake()
+    {
+        meshFilter = GetComponent<MeshFilter>();
+        stopDrawing = false;
+    }
 
     void Update()
     {
+        if (stopDrawing) return;
+
         //Made test Mesh
         Mesh mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        meshFilter.mesh = mesh;
 
         Vector2 currentPosition = transform.position;
         Vector3[] vertices = new Vector3[rayCount + 2];
@@ -40,10 +51,13 @@ public class EnemyCone : MonoBehaviour
             if(debugRay) Debug.DrawRay(currentPosition, rayDirection*raycastLength, Color.white, 0.01f);
             Vector3 vertex;
             
-            if(raycastHit2D.collider != null){
+            if(raycastHit2D.collider != null && raycastHit2D.collider.gameObject.tag != "Coin")
+            {
                 //Obstacle Hit
-                if(raycastHit2D.collider.tag == "Player"){
-                    if(debugLog) Debug.Log("Player found!"); 
+                if(raycastHit2D.collider.TryGetComponent<Player>(out Player player)){
+                    if(debugLog) Debug.Log("Player found!");
+                    player.Spotted();
+                    stopDrawing = true;
                 }
                 if(debugLog) Debug.Log("Object hit!!");
                 vertex = vertexDirection * raycastHit2D.distance;

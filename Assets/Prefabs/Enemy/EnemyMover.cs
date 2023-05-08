@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] Transform path;
+    bool isPathEmpty;
     Transform[] pathNodes;
 
     [SerializeField] float speed;
@@ -23,6 +24,9 @@ public class EnemyMover : MonoBehaviour
     float rotationTime, angle, lastAngle=0f;
     void Awake()
     {
+        isPathEmpty = path == null;
+        if (isPathEmpty) return;
+
         pathNodes = new Transform[path.childCount];
         for(int i=0; i < path.childCount; i++){
             pathNodes[i] = path.GetChild(i);
@@ -44,6 +48,8 @@ public class EnemyMover : MonoBehaviour
 
     void Start()
     {
+        if (isPathEmpty) return;
+
         counter = 1 + startNode;
         UpdateTravelDirection();
         UpdatePathDirection();
@@ -51,6 +57,7 @@ public class EnemyMover : MonoBehaviour
 
     void Update()
     {
+        if (isPathEmpty) return;
         moveDirection = pathNodes[counter].position - transform.position;
 
         angle = 0;
