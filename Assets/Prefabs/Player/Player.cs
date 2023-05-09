@@ -5,15 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public static Player self;
+
     int coinsPickedUp;
+    public int GetCoins() { return coinsPickedUp; }
     [SerializeField] int goal;
-    bool endLevel;
+    public int coinsLeft
+    {
+        get { return goal - coinsPickedUp; }
+    }
+
+    public bool endLevel;
     public bool canFinishLevel
     {
-        get
+        get{  return coinsLeft <= 0; }
+    }
+
+    private void Awake()
+    {
+        if(self != null)
         {
-            return coinsPickedUp >= goal;
+            Debug.LogError("Multiple Players are present");
         }
+        self = this;
     }
 
     private void Start()
@@ -25,6 +39,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene((int)SceneIndexes.mainMenu, LoadSceneMode.Single);
+        }
+
         if (endLevel && Input.GetKeyDown(KeyCode.R))   // reloads the scene on pressing R (after level ends)
         {
             Time.timeScale = 1;

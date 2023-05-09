@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+enum SceneIndexes
+{
+    mainMenu,
+    achievementsReview,
+    level1
+}
+// Scene 0 is the main menu
+// Scene 1 is the achievement menu
+// Scene 2 is the first level
+
 public class StartButton : MonoBehaviour
 {
-    const int level1SceneIndex = 1;
-    // Scene 0 is the main menu
-    // Scene 1 is the first level
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene(level1SceneIndex, LoadSceneMode.Single);
+        SceneManager.LoadScene((int)SceneIndexes.level1, LoadSceneMode.Single);
     }
 }
