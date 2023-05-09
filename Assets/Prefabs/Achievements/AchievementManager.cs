@@ -94,7 +94,7 @@ public class AchievementManager : MonoBehaviour
             "Achievement1",
             "Almost there!", 
             () => {
-                return player.coinsLeft == 1 && player.endLevel;
+                return player.coinsLeft == 1 && player.endLevel && !player.isAlive;
             });
 
         // Achievement 2:  Die really quickly
@@ -103,7 +103,7 @@ public class AchievementManager : MonoBehaviour
             "Achievement2",
             "Quick and Painless",
             () => {
-                return Time.timeSinceLevelLoad <= quickDeathMaxTime && player.endLevel;
+                return Time.timeSinceLevelLoad <= quickDeathMaxTime && player.endLevel && !player.isAlive;
             });
 
         // Achievement 3:  Finish the level in a long time
@@ -112,7 +112,7 @@ public class AchievementManager : MonoBehaviour
             "Achievement3",
             "Slow And Steady",
             () => {
-                return Time.timeSinceLevelLoad >= slowLevelCompletionTime && player.canFinishLevel && player.endLevel;
+                return Time.timeSinceLevelLoad >= slowLevelCompletionTime && player.canFinishLevel && player.endLevel && player.isAlive;
             });
 
         // Achievement 4:  Speedrun the level
@@ -121,7 +121,7 @@ public class AchievementManager : MonoBehaviour
             "Achievement4",
             "As Swift as the Wind",
             () => {
-                return Time.timeSinceLevelLoad <= fastLevelCompletionTime && player.canFinishLevel && player.endLevel;
+                return Time.timeSinceLevelLoad <= fastLevelCompletionTime && player.canFinishLevel && player.endLevel && player.isAlive;
             });
 
         // Achievement 5:  Observe your enemy carefully before starting to play the level
@@ -130,7 +130,7 @@ public class AchievementManager : MonoBehaviour
             "Achievement5",
             "Careful Observer",
             () => {
-                return Time.timeSinceLevelLoad >= minWaitTime && player.GetCoins() == 0;
+                return Time.timeSinceLevelLoad >= minWaitTime && player.GetCoins() == 0 && player.isAlive;
             });
 
         foreach (Achievement a in achievements)

@@ -7,7 +7,9 @@ enum SceneIndexes
 {
     mainMenu,
     achievementsReview,
-    level1
+    level1,
+
+    level2
 }
 // Scene 0 is the main menu
 // Scene 1 is the achievement menu

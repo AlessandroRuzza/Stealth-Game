@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     }
 
     public bool endLevel;
+    public bool isAlive;
     public bool canFinishLevel
     {
         get{  return coinsLeft <= 0; }
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1;
         endLevel = false;
+        isAlive = true;
         coinsPickedUp = 0;
     }
 
@@ -50,6 +52,14 @@ public class Player : MonoBehaviour
             int activeIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(activeIndex, LoadSceneMode.Single);
         }
+
+        if (endLevel && isAlive && Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale = 1;
+            int activeIndex = SceneManager.GetActiveScene().buildIndex;
+            //Remember to cap maximum active index to number of levels
+            SceneManager.LoadScene(activeIndex+1, LoadSceneMode.Single);
+        }
     }
 
     public void PickUpCoin()
@@ -64,6 +74,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 0;
         Debug.Log("You lost. Press R to restart");
         endLevel = true;
+        isAlive = false;
     }
 
     public void LevelComplete()

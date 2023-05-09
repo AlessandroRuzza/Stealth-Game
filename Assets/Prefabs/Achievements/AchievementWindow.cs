@@ -48,7 +48,7 @@ public class AchievementWindow : MonoBehaviour
         }
         else if(timerPassed)
         {
-            transform.Translate(Vector3.left * slideSpeed * Time.unscaledDeltaTime);
+            transform.Translate(Vector3.right * slideSpeed * Time.unscaledDeltaTime);
             if (transform.position.x >= rightBound)
             {
                 timerPassed = false;
@@ -57,7 +57,7 @@ public class AchievementWindow : MonoBehaviour
 
         if (startTimer)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             if(time >= timerToSlideOut)
             {
                 timerPassed = true;
