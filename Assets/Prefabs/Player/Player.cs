@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene((int)SceneIndexes.mainMenu, LoadSceneMode.Single);
         }
