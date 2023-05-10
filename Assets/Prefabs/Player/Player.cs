@@ -60,6 +60,15 @@ public class Player : MonoBehaviour
             //Remember to cap maximum active index to number of levels
             SceneManager.LoadScene(activeIndex+1, LoadSceneMode.Single);
         }
+
+        // Get the current rotation of the object
+        Quaternion currentRotation = transform.rotation;
+
+        // Reset the Z rotation to 0
+        currentRotation.eulerAngles = new Vector3(currentRotation.eulerAngles.x, currentRotation.eulerAngles.y, 0f);
+
+        // Update the rotation of the object
+        transform.rotation = currentRotation;
     }
 
     public void PickUpCoin()
