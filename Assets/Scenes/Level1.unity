@@ -869,6 +869,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883249152014030611, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883249152014030611, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883249152014030611, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030612, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_RootOrder
       value: 0
