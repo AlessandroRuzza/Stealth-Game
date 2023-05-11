@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     public static Player self;
 
+    public Animator animator;
+
     int coinsPickedUp;
     public int GetCoins() { return coinsPickedUp; }
     [SerializeField] int goal;
@@ -27,8 +29,10 @@ public class Player : MonoBehaviour
         if(self != null)
         {
             Debug.LogError("Multiple Players are present");
+            return;
         }
         self = this;
+        animator = GetComponent<Animator>();
     }
 
     private void Start()

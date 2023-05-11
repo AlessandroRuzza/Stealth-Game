@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Player.self.isAlive)
         {
 			Debug.Log("Esc Detected");
 			Debug.Log(isPaused);
@@ -40,9 +40,14 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+
+        if(Player.self.isAlive)
+        {
+            Time.timeScale = 1f;
+        }
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
+            
     }
 
     public void GoToMainMenu()
@@ -50,5 +55,12 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartLevel()
+    {
+        Scene current_level = SceneManager.GetActiveScene();
+
+        SceneManager.LoadScene(current_level.buildIndex);
     }
 }

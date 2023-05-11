@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] float speed;
-    Vector3 startPosition;
     Vector2 force;
     new Rigidbody2D rigidbody2D;
     Player player;
@@ -20,16 +19,12 @@ public class PlayerMover : MonoBehaviour
         rigidbody2D.freezeRotation = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Start()
-    {
-        startPosition = transform.position;
-    }
-
     void Update()
     {
         UpdateForce();
         animator.SetFloat("movSpeed",rigidbody2D.velocity.magnitude);
         animator.SetBool("isDead",!player.isAlive);
+        animator.updateMode=(player.isAlive) ? AnimatorUpdateMode.Normal : AnimatorUpdateMode.UnscaledTime;
     }
 
     void FixedUpdate() {    // it's better to do physics in "FixedUpdate"
@@ -44,12 +39,11 @@ public class PlayerMover : MonoBehaviour
         if(Input.GetKey(KeyCode.S)) verticalMove--;
         if(Input.GetKey(KeyCode.A)) horizontalMove--;
         if(Input.GetKey(KeyCode.D)) horizontalMove++;
-
         
         force = new Vector2(horizontalMove, verticalMove);
 
 
-        if(force.x!=0 && player.isAlive)
+        if(force.x!=0 && player.isAlive && Time.timeScale>0)
         {
             spriteRenderer.flipX = force.x<0;
         }
