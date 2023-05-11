@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class AchievementButton : MonoBehaviour
 {
+    [SerializeField] GameObject playerNameErrorWindow;
+
     public void LoadAchiementReview()
     {
-        SceneManager.LoadScene((int)SceneIndexes.achievementsReview, LoadSceneMode.Single);
+        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
+        if (playerName != "" && playerName != null)
+            SceneManager.LoadScene((int)SceneIndexes.achievementsReview, LoadSceneMode.Single);
+        else
+            playerNameErrorWindow.SetActive(true);
     }
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public static Player self;
+    public static Action<int> useEye;
 
     public Animator animator;
 
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
             return;
         }
         self = this;
+        useEye = null;
         animator = GetComponent<Animator>();
     }
 
@@ -95,6 +98,7 @@ public class Player : MonoBehaviour
         Debug.Log("You lost. Press R to restart");
         endLevel = true;
         isAlive = false;
+        useEye(-1);     // turns off the eye overlay
     }
 
     public void LevelComplete()
@@ -102,5 +106,6 @@ public class Player : MonoBehaviour
         Debug.Log("You won! Great job. Press R to restart or Space to continue");
         endLevel = true;
         File.Create(playerFolderPath + SceneManager.GetActiveScene().name);
+        useEye(-1);     // turns off the eye overlay
     }
 }

@@ -48,5 +48,16 @@ public class PlayerNameDropdown : MonoBehaviour
     {
         textField.text = dropdown.options[dropdown.value].text;
         PlayerPrefs.SetString(ConfirmName.keyPlayerName, textField.text);
+
+        int difficulty=2;   // default difficutly is normal
+        if (File.Exists(Application.persistentDataPath + "/" + playerName + "/Difficulty_1")) 
+            difficulty = 1;
+        else if (File.Exists(Application.persistentDataPath + "/" + playerName + "/Difficulty_3"))
+            difficulty = 3;
+
+        PlayerPrefs.SetInt(Difficulty.keyDifficulty, difficulty);
+
+        if (Difficulty.reload != null)
+            Difficulty.reload();
     }
 }
