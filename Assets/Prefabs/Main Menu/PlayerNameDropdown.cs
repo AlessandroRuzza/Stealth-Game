@@ -25,7 +25,7 @@ public class PlayerNameDropdown : MonoBehaviour
 
     public void RefreshPlayerList()
     {
-        listOfPlayers = Directory.EnumerateDirectories(Application.persistentDataPath).Append("EmptyForDebug").ToList();
+        listOfPlayers = Directory.EnumerateDirectories(Application.persistentDataPath).Append("").ToList();
         // need to append that extra element to make the dropdown display elements correctly
 
         for(int i=0; i<listOfPlayers.Count; i++)

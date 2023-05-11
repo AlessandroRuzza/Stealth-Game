@@ -7,8 +7,8 @@ enum SceneIndexes
 {
     mainMenu,
     achievementsReview,
+    levelSelection,
     level1,
-
     level2
 }
 // Scene 0 is the main menu
@@ -17,8 +17,14 @@ enum SceneIndexes
 
 public class StartButton : MonoBehaviour
 {
+    [SerializeField] GameObject playerNameErrorWindow;
+
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene((int)SceneIndexes.level1, LoadSceneMode.Single);
+        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
+        if(playerName != "" && playerName != null)
+            SceneManager.LoadScene((int)SceneIndexes.levelSelection, LoadSceneMode.Single);
+        else
+            playerNameErrorWindow.SetActive(true);
     }
 }

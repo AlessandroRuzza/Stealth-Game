@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,11 @@ public class Player : MonoBehaviour
     {
         get { return goal - coinsPickedUp; }
     }
+    string playerName;
+    string playerFolderPath
+    {
+        get { return Application.persistentDataPath + "/" + playerName + "/"; }
+    }
 
     public bool endLevel;
     public bool isAlive;
@@ -26,7 +32,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if(self != null)
+        playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
+        if (self != null)
         {
             Debug.LogError("Multiple Players are present");
             return;
@@ -92,7 +99,8 @@ public class Player : MonoBehaviour
 
     public void LevelComplete()
     {
-        Debug.Log("You won! Great job. Press R to restart");
+        Debug.Log("You won! Great job. Press R to restart or Space to continue");
         endLevel = true;
+        File.Create(playerFolderPath + SceneManager.GetActiveScene().name);
     }
 }
