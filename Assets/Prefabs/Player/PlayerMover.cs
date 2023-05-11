@@ -10,10 +10,15 @@ public class PlayerMover : MonoBehaviour
     Vector2 force;
     new Rigidbody2D rigidbody2D;
     Player player;
+    public Animator animator;
+
+    SpriteRenderer spriteRenderer;
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        rigidbody2D.freezeRotation = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Start()
     {
@@ -23,10 +28,13 @@ public class PlayerMover : MonoBehaviour
     void Update()
     {
         UpdateForce();
+        animator.SetFloat("movSpeed",rigidbody2D.velocity.magnitude);
+        animator.SetBool("isDead",!player.isAlive);
     }
 
     void FixedUpdate() {    // it's better to do physics in "FixedUpdate"
         rigidbody2D.velocity = force.normalized*speed;
+        
     }
 
     void UpdateForce(){
@@ -36,8 +44,15 @@ public class PlayerMover : MonoBehaviour
         if(Input.GetKey(KeyCode.S)) verticalMove--;
         if(Input.GetKey(KeyCode.A)) horizontalMove--;
         if(Input.GetKey(KeyCode.D)) horizontalMove++;
+
         
         force = new Vector2(horizontalMove, verticalMove);
+
+
+        if(force.x!=0 && player.isAlive)
+        {
+            spriteRenderer.flipX = force.x<0;
+        }
     }
     
     void OnTriggerEnter2D(Collider2D other) {       
