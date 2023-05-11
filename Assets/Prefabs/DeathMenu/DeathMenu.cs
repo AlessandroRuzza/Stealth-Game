@@ -28,7 +28,7 @@ public class DeathMenu : MonoBehaviour
 		if(!Player.self.isAlive)
 		{
 			timer += Time.unscaledDeltaTime;
-			if (!AnimatorIsPlaying() && timer >0.2)
+			if (!AnimatorIsPlaying() && timer >0.1)
 			{
 				deathMenu.SetActive(true);
 				Time.timeScale = 0f;
@@ -58,7 +58,7 @@ public class DeathMenu : MonoBehaviour
     }
 
 	bool AnimatorIsPlaying(){
-		return animator.GetCurrentAnimatorStateInfo(0).length >
+		return animator.GetCurrentAnimatorStateInfo(0).length+1 >
 				animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
   	}
 
