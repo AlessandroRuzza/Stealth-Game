@@ -18,6 +18,7 @@ public class AchievementReview : MonoBehaviour
     {
         achievementManager = AchievementManager.self;
         Achievement a = achievementManager.GetAchievement(index);
+        if (a == null) return;
         title.text = a.name;
         description.text = a.wasCompleted ? "Done" : "Not done";
 
