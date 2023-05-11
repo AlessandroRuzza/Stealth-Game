@@ -15,6 +15,7 @@ public class ConfirmName : MonoBehaviour
         get { return Application.persistentDataPath + "/" + playerName; }
     }
     [SerializeField] TMP_InputField nameInputField;
+    [SerializeField] PlayerNameDropdown nameDropdown;
 
     private void Start()
     {
@@ -32,6 +33,10 @@ public class ConfirmName : MonoBehaviour
         PlayerPrefs.Save();
 
         if (!Directory.Exists(playerFolderPath))
+        {
             Directory.CreateDirectory(playerFolderPath);
+            nameDropdown.RefreshPlayerList();
+        }
+        nameDropdown.RefreshPlayerSelected();
     }
 }
