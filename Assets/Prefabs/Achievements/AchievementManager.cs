@@ -22,7 +22,6 @@ public class Achievement
         wasCompleted = false;
         isRequirementMet = condition;
     }
-
 }
 
 public class AchievementManager : MonoBehaviour
@@ -33,13 +32,20 @@ public class AchievementManager : MonoBehaviour
     Achievement[] achievements;
     [SerializeField] bool reviewMode;
     Player player;
-
+    string playerName;
+    string playerFolderPath
+    {
+        get { return Application.persistentDataPath + "/" + playerName + "/"; }
+    }
     [SerializeField] AchievementWindow achievementWindow;
 
     private void Awake()
     {
         if (self != null) Debug.LogError("More than 1 achievement manager!");
         self = this;
+
+        playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
+
         achievements = new Achievement[NUM_OF_ACHIEVEMENTS];
         InitAchievements();
     }
@@ -59,7 +65,7 @@ public class AchievementManager : MonoBehaviour
                 Debug.Log("Achievement " + a.name + " done!");
                 a.wasCompleted = true;
                 achievementWindow.Show(a);
-                PlayerPrefs.SetInt(a.key, 1);
+                CompleteAchievement(a);
             }
         }
     }
@@ -87,7 +93,7 @@ public class AchievementManager : MonoBehaviour
         return achievements[index-1];
     }
 
-    public void InitAchievements()
+    void InitAchievements()
     {
         // Achievement 1:  Die when you're only missing one coin
         achievements[0] = new Achievement(
@@ -135,8 +141,7 @@ public class AchievementManager : MonoBehaviour
 
         foreach (Achievement a in achievements)
         {
-            if (PlayerPrefs.HasKey(a.key))
-                a.wasCompleted = PlayerPrefs.GetInt(a.key) == 1;
+            a.wasCompleted = File.Exists(playerFolderPath + a.key);
         }
     }
 
@@ -144,7 +149,13 @@ public class AchievementManager : MonoBehaviour
     {
         foreach (Achievement a in achievements)
         {
-            PlayerPrefs.SetInt(a.key, 0);
+            File.Delete(playerFolderPath + a.key);
         }
+    }
+
+    void CompleteAchievement(Achievement a)
+    {
+        a.wasCompleted = true;
+        File.Create(playerFolderPath + a.key);
     }
 }
