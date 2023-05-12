@@ -533,6 +533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1357252571}
+  godViewCamera: {fileID: 1381803047}
+  playerCamera: {fileID: 519420031}
 --- !u!114 &203741001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,15 +1614,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030610, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_Size.y
-      value: 3.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030610, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 3.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030611, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_Size.y
-      value: 3.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030611, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_Color.b
@@ -1648,7 +1650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030612, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.42
+      value: 2.71
       objectReference: {fileID: 0}
     - target: {fileID: 2883249152014030612, guid: 4e1be9aa2577779459cbff7dc24644e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4283,6 +4285,10 @@ PrefabInstance:
     - target: {fileID: 4833377535714183871, guid: 770b61cefe0224042bcca82a86885a98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835317390494277641, guid: 770b61cefe0224042bcca82a86885a98, type: 3}
+      propertyPath: goal
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770b61cefe0224042bcca82a86885a98, type: 3}

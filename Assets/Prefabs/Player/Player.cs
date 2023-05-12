@@ -55,19 +55,19 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {
+    {/*
         if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene((int)SceneIndexes.mainMenu, LoadSceneMode.Single);
         }
 
-        /*
+        
         if (endLevel && Input.GetKeyDown(KeyCode.R))   // reloads the scene on pressing R (after level ends)
         {
             Time.timeScale = 1;
             int activeIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(activeIndex, LoadSceneMode.Single);
-        }*/
+        }
 
         if (endLevel && isAlive && Input.GetKeyDown(KeyCode.Space))
         {
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             int activeIndex = SceneManager.GetActiveScene().buildIndex;
             //Remember to cap maximum active index to number of levels
             SceneManager.LoadScene(activeIndex+1, LoadSceneMode.Single);
-        }
+        }*/
 
         // Get the current rotation of the object
         Quaternion currentRotation = transform.rotation;
@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
     public void Spotted()
     {
         // stops the level
+        if (endLevel) return;
         Time.timeScale = 0;
         Debug.Log("You lost. Press R to restart");
         endLevel = true;

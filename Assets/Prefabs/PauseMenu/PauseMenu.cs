@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    [SerializeField] Camera godViewCamera;
+    [SerializeField] Camera playerCamera;
 
     void Awake()
     {
@@ -33,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        godViewCamera.depth = playerCamera.depth - 1;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
