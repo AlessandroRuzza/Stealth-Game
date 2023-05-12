@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager self;
 
-    public const int NUM_OF_LEVELS=5;
+    public const int NUM_OF_LEVELS=4;
     Level[] levels;
     string playerName;
     string playerFolderPath
@@ -96,10 +96,6 @@ public class LevelManager : MonoBehaviour
         levels[3] = new Level(
             "Level4",
             "Evasive Maneuvers"
-            );
-        levels[4] = new Level(
-            "Level5",
-            "Escape Artist"
             );
 
         foreach (Level l in levels)

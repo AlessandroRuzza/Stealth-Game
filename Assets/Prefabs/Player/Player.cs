@@ -61,12 +61,13 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene((int)SceneIndexes.mainMenu, LoadSceneMode.Single);
         }
 
+        /*
         if (endLevel && Input.GetKeyDown(KeyCode.R))   // reloads the scene on pressing R (after level ends)
         {
             Time.timeScale = 1;
             int activeIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(activeIndex, LoadSceneMode.Single);
-        }
+        }*/
 
         if (endLevel && isAlive && Input.GetKeyDown(KeyCode.Space))
         {

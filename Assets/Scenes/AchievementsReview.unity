@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reset All
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -297,7 +297,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0000076293945, y: -423}
-  m_SizeDelta: {x: 346.72, y: 139.5284}
+  m_SizeDelta: {x: 346.72, y: 106.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &100840665
 MonoBehaviour:
@@ -551,8 +551,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -576,8 +576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -725,6 +725,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_text
+      value: Complete a level in less than 30 seconds
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfcf1730ae9a72419163044657c825a, type: 3}
 --- !u!224 &1072922013 stripped
@@ -835,6 +851,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_text
+      value: Die in less than 10 seconds
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfcf1730ae9a72419163044657c825a, type: 3}
 --- !u!1 &1097661855
@@ -1070,6 +1102,34 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.35741404
       objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_text
+      value: Take more than 2 minutes to complete a level
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223863042173, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -46.490135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042173, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.6550598
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfcf1730ae9a72419163044657c825a, type: 3}
 --- !u!1 &1358769523
@@ -1084,6 +1144,8 @@ GameObject:
   - component: {fileID: 1358769526}
   - component: {fileID: 1358769525}
   - component: {fileID: 1358769524}
+  - component: {fileID: 1358769529}
+  - component: {fileID: 1358769528}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1179,6 +1241,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1358769528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358769523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 11bbe7041501a8047a9fbb6bb4fc04cc, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1358769529
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358769523}
+  m_CullTransparentMesh: 0
 --- !u!1 &1447120800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,8 +1314,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -185}
-  m_SizeDelta: {x: 346.7216, y: 264.5134}
+  m_AnchoredPosition: {x: 0, y: -270}
+  m_SizeDelta: {x: 346.7216, y: 110.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447120802
 MonoBehaviour:
@@ -1425,6 +1522,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_text
+      value: Observe your enemy's movement for more than a minute
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfcf1730ae9a72419163044657c825a, type: 3}
 --- !u!224 &1691699906 stripped
@@ -1610,9 +1723,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Completion Box
       objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_text
+      value: Die when you're only missing one coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223777449205, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
       propertyPath: m_fontSize
-      value: 86
+      value: 80.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+    - target: {fileID: 6497971223863042170, guid: edfcf1730ae9a72419163044657c825a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfcf1730ae9a72419163044657c825a, type: 3}

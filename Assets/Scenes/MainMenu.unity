@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 8489337605253528944, guid: 873661f085bf5594381315aa31547511, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     - target: {fileID: 8489337605328390916, guid: 873661f085bf5594381315aa31547511, type: 3}
       propertyPath: difficulty
       value: 2
@@ -461,8 +465,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -549,6 +553,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 8489337605253528944, guid: 873661f085bf5594381315aa31547511, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     - target: {fileID: 8489337605328390916, guid: 873661f085bf5594381315aa31547511, type: 3}
       propertyPath: difficulty
       value: 3
@@ -708,8 +716,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Achievements
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1639,8 +1647,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: OK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2260,8 +2268,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2904,8 +2912,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3174,8 +3182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Difficulty
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3309,8 +3317,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select your player name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4193,8 +4201,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name Player 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
+  m_sharedMaterial: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4218,14 +4226,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.95
+  m_fontSize: 55.8
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4312,6 +4320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1214658343}
     m_Modifications:
+    - target: {fileID: 8489337605253528944, guid: 873661f085bf5594381315aa31547511, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7051187967506967659, guid: 7edcb47cf3f9aa34eba3b102e21d6d8e, type: 2}
     - target: {fileID: 8489337605328390936, guid: 873661f085bf5594381315aa31547511, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

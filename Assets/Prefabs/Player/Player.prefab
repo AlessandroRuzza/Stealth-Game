@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4833377535714183870}
   - component: {fileID: 4833377535714183840}
   - component: {fileID: 8835317390494277641}
+  - component: {fileID: 1355789253769678330}
   - component: {fileID: 1129677586}
   - component: {fileID: 1129677585}
   m_Layer: 0
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  animator: {fileID: 0}
 --- !u!114 &8835317390494277641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +115,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d9abf6e5142dd4cb83533c13b1fb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   goal: 3
+  endLevel: 0
+  isAlive: 0
+--- !u!114 &1355789253769678330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833377535714183869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46b4558e873a054f9f0becbd4c203cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRewinding: 0
 --- !u!50 &1129677586
 Rigidbody2D:
   serializedVersion: 4

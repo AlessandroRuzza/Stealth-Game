@@ -12,8 +12,10 @@ public class PlayerMover : MonoBehaviour
     public Animator animator;
 
     SpriteRenderer spriteRenderer;
+    private RewindManager rewindManager;
 
     private void Awake() {
+        rewindManager = new RewindManager();
         rigidbody2D = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         rigidbody2D.freezeRotation = true;
@@ -33,20 +35,23 @@ public class PlayerMover : MonoBehaviour
     }
 
     void UpdateForce(){
-        int verticalMove=0;
-        int horizontalMove=0;
-        if(Input.GetKey(KeyCode.W)) verticalMove++;
-        if(Input.GetKey(KeyCode.S)) verticalMove--;
-        if(Input.GetKey(KeyCode.A)) horizontalMove--;
-        if(Input.GetKey(KeyCode.D)) horizontalMove++;
-        
-        force = new Vector2(horizontalMove, verticalMove);
+        if (!RewindManager.isRewinding){
+            int verticalMove=0;
+            int horizontalMove=0;
+            if(Input.GetKey(KeyCode.W)) verticalMove++;
+            if(Input.GetKey(KeyCode.S)) verticalMove--;
+            if(Input.GetKey(KeyCode.A)) horizontalMove--;
+            if(Input.GetKey(KeyCode.D)) horizontalMove++;
+            
+            force = new Vector2(horizontalMove, verticalMove);
 
 
-        if(force.x!=0 && player.isAlive && Time.timeScale>0)
-        {
-            spriteRenderer.flipX = force.x<0;
+            if(force.x!=0 && player.isAlive && Time.timeScale>0)
+            {
+                spriteRenderer.flipX = force.x<0;
+            }
         }
+        
     }
     
     void OnTriggerEnter2D(Collider2D other) {       

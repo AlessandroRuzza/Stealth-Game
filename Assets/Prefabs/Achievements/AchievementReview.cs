@@ -9,7 +9,7 @@ public class AchievementReview : MonoBehaviour
     AchievementManager achievementManager;
 
     [SerializeField] TMPro.TextMeshProUGUI title;
-    [SerializeField] TMPro.TextMeshProUGUI description;
+    //[SerializeField] TMPro.TextMeshProUGUI description;
     [SerializeField] Image completionBox;
     [SerializeField] Color notDone;
     [SerializeField] Color done;
@@ -20,7 +20,7 @@ public class AchievementReview : MonoBehaviour
         Achievement a = achievementManager.GetAchievement(index);
         if (a == null) return;
         title.text = a.name;
-        description.text = a.wasCompleted ? "Done" : "Not done";
+        //description.text = a.wasCompleted ? "Done" : "Not done";
 
         completionBox.color = a.wasCompleted ? done : notDone;
     }
