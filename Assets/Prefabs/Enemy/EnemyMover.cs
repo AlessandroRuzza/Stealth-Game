@@ -22,6 +22,8 @@ public class EnemyMover : MonoBehaviour
     Vector2 pathDirection;
     bool isLoop=false;
     float rotationTime, angle, lastAngle=0f;
+
+    public Animator animator;
     void Awake()
     {
         isPathEmpty = path == null;
@@ -90,6 +92,7 @@ public class EnemyMover : MonoBehaviour
             UpdatePathDirection();
         }
         lastAngle = angle;
+        
     }
 
     void UpdateTravelDirection()
@@ -113,5 +116,6 @@ public class EnemyMover : MonoBehaviour
     {
         pathDirection = pathNodes[counter].position - pathNodes[counter - travelDirection].position;
         rotationTime = (pathDirection.magnitude / speed) / rotationSpeed;
+        animator.SetFloat("speed",pathDirection.magnitude);
     }
 }

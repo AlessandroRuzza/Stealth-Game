@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     int coinsPickedUp;
     public int GetCoins() { return coinsPickedUp; }
     [SerializeField] int goal;
+    public int totCoins() { return goal;}
     public int coinsLeft
     {
         get { return goal - coinsPickedUp; }
