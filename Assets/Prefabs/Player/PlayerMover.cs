@@ -15,7 +15,7 @@ public class PlayerMover : MonoBehaviour
     private RewindManager rewindManager;
 
     private void Awake() {
-        rewindManager = new RewindManager();
+        rewindManager = GetComponent <RewindManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         rigidbody2D.freezeRotation = true;

@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("You won! Great job. Press R to restart or Space to continue");
         endLevel = true;
-        File.Create(playerFolderPath + SceneManager.GetActiveScene().name);
+        File.Create(playerFolderPath + SceneManager.GetActiveScene().name).Close();
         useEye(-1);     // turns off the eye overlay
     }
 }

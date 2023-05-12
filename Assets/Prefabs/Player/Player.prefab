@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 8835317390494277641}
   - component: {fileID: 1355789253769678330}
   - component: {fileID: 1129677586}
-  - component: {fileID: 1129677585}
+  - component: {fileID: 7430728365450169790}
+  - component: {fileID: 4646095882833011713}
+  - component: {fileID: 1978802698987495707}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -31,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 4833377535714183869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.42, y: -1.71, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.02, y: 2.02, z: 2.02}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  animator: {fileID: 0}
+  animator: {fileID: 4646095882833011713}
 --- !u!114 &8835317390494277641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b4558e873a054f9f0becbd4c203cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRewinding: 0
 --- !u!50 &1129677586
 Rigidbody2D:
   serializedVersion: 4
@@ -153,8 +154,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1129677585
-CircleCollider2D:
+--- !u!61 &7430728365450169790
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,6 +167,52 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.02, y: -0.29}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.74, y: 0.76}
+  m_EdgeRadius: 0
+--- !u!95 &4646095882833011713
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833377535714183869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3be0c29079851240b51a98843bb6edc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1978802698987495707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833377535714183869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1077db3e35b3f42b3d2af0d9653f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  godViewCamera: {fileID: 0}
+  sizeZoom: 5.69
+  sizeNotZoom: 12.04547
