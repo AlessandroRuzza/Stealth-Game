@@ -10,6 +10,7 @@ public class DeathMenu : MonoBehaviour
 
 	public Animator animator;
 	float timer;
+    
 
     void Awake()
     {

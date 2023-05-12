@@ -59,9 +59,9 @@ public class AchievementManager : MonoBehaviour
     {
         if (reviewMode) return;
         foreach(Achievement a in achievements)
-        {
+    {
             if (!a.wasCompleted && a.isRequirementMet())
-            {
+        {
                 Debug.Log("Achievement " + a.name + " done!");
                 a.wasCompleted = true;
                 achievementWindow.Show(a);
