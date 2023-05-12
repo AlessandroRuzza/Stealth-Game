@@ -258,13 +258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   speed: 3
-  movePrecision: 1
-  rotationSpeed: 3
-  turnClockwise: 1
-  anglePrecision: 1.5
-  minAngleThreshold: 1
+  rotationSpeed: 200
+  isLoop: 1
   startNode: 0
-  animator: {fileID: 8295390300216524273}
 --- !u!114 &8498672334469211301
 MonoBehaviour:
   m_ObjectHideFlags: 0

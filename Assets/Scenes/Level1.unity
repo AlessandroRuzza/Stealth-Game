@@ -1765,6 +1765,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 419995059}
     - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
+      propertyPath: isLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: offset
       value: 1
       objectReference: {fileID: 0}
@@ -2482,12 +2486,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 419995059}
     - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
+      propertyPath: isLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1604315444}
     - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985462688609083693, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
+      propertyPath: rotationSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3535306983830367961, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: m_Color.a
