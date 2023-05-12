@@ -21,7 +21,7 @@ public class EnemyMover : MonoBehaviour
     Vector2 moveDirection;
     Vector2 pathDirection;
     bool isLoop=false;
-    float rotationTime, angle, lastAngle=0f;
+    float angle, cumulativeAngle = 0f, totalAngle=0f;
 
     public Animator animator;
     void Awake()
@@ -62,26 +62,21 @@ public class EnemyMover : MonoBehaviour
         if (isPathEmpty) return;
         moveDirection = pathNodes[counter].position - transform.position;
 
-        angle = 0;
-        float angleThreshold = anglePrecision * lastAngle * Time.deltaTime / rotationTime;
-        bool headingOK = Vector2.Angle(moveDirection, transform.up) <= Mathf.Clamp(angleThreshold, minAngleThreshold, Mathf.Infinity);
+	angle = 0f;
+        float remainingAngle = Vector2.SignedAngle(transform.up, pathDirection);
+        bool headingOK = cumulativeAngle >= Mathf.Abs(totalAngle) - anglePrecision;
         bool isInBounds_2Positions = (counter > 1 && travelDirection == 1) || (counter < pathNodes.Length - 2 && travelDirection == -1);
         bool isComingFromEndNode = ((counter == 1 && travelDirection == 1) || (counter == pathNodes.Length - 2 && travelDirection == -1));
 
-        if (!isLoop && isComingFromEndNode && !headingOK) 
-            angle = (turnClockwise) ? -180 : 180;
-        else if (!headingOK && isInBounds_2Positions)
+        if (!headingOK)
         {
-            Vector2 oldDirection = pathNodes[counter - travelDirection].position - pathNodes[counter - 2*travelDirection].position;
-            angle = Vector2.SignedAngle(oldDirection, pathDirection);
+            angle = totalAngle * Time.deltaTime * rotationSpeed;
+            transform.Rotate(0, 0, angle);
         }
-        else if(!headingOK && isLoop && counter == 1)
+        else
         {
-            Vector2 oldDirection = pathNodes[0].position - pathNodes[pathNodes.Length-2].position;
-            angle = Vector2.SignedAngle(oldDirection, pathDirection);
+            transform.Rotate(0, 0, remainingAngle);
         }
-
-        transform.Rotate(0, 0, angle * Time.deltaTime / rotationTime);
         transform.Translate(moveDirection.normalized * Time.deltaTime * speed, Space.World);
 
         bool isCloseEnough = moveDirection.magnitude <= movePrecision * Time.deltaTime * speed;
@@ -90,32 +85,42 @@ public class EnemyMover : MonoBehaviour
             counter += travelDirection;
             UpdateTravelDirection();
             UpdatePathDirection();
+            totalAngle = Vector2.SignedAngle(transform.up, pathDirection);
+            turnClockwise = (totalAngle > 0);
+            cumulativeAngle = 0f;
         }
-        lastAngle = angle;
-        
+        else
+            cumulativeAngle += Mathf.Abs(angle);
     }
+
+    //void SetTotalAngle()
+    //{
+    //    totalAngle = Vector2.SignedAngle(transform.up, pathDirection);
+    //}
+    //void SetRotationDirection()
+    //{
+    //    turnClockwise = (totalAngle > 0);
+    //}
 
     void UpdateTravelDirection()
     {
         if (counter >= pathNodes.Length || counter < 0)
         {   // if I would be going past the last node in the array, invert direction
-            if (pathNodes[pathNodes.Length - 1].position != pathNodes[0].position)
-            { // the path isn't a loop
+	        isLoop = pathNodes[pathNodes.Length - 1].position == pathNodes[0].position;
+            if (!isLoop)
+            {   // the path isn't a loop
                 travelDirection = -travelDirection;
                 counter += 2 * travelDirection;
-                isLoop = false;
             }
             else
-            { // path is a loop: no need to invert travelDirection
+            {   // path is a loop: no need to invert travelDirection
                 counter = 1;
-                isLoop = true;
             }
         }
     }
     void UpdatePathDirection()
     {
         pathDirection = pathNodes[counter].position - pathNodes[counter - travelDirection].position;
-        rotationTime = (pathDirection.magnitude / speed) / rotationSpeed;
         animator.SetFloat("speed",pathDirection.magnitude);
     }
 }
