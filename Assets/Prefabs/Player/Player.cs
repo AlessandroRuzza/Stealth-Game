@@ -99,16 +99,20 @@ public class Player : MonoBehaviour
         if (endLevel) return;
         Time.timeScale = 0;
         Debug.Log("You lost. Press R to restart");
-        endLevel = true;
         isAlive = false;
-        useEye(-1);     // turns off the eye overlay
+        EndLevel();
     }
 
     public void LevelComplete()
     {
+        if (endLevel) return;
         Debug.Log("You won! Great job. Press R to restart or Space to continue");
-        endLevel = true;
         File.Create(playerFolderPath + SceneManager.GetActiveScene().name).Close();
+        EndLevel();
+    }
+
+    void EndLevel(){
+        endLevel = true;
         useEye(-1);     // turns off the eye overlay
     }
 }

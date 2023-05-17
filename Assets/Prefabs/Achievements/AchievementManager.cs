@@ -12,10 +12,9 @@ public class Achievement
     public string key { get; private set; }
     public string name { get; private set; }
     public bool wasCompleted;
-    public delegate bool Condition();
-    public Condition isRequirementMet;
+    public Predicate<Player> isRequirementMet;
 
-    public Achievement(string k, string n, Condition condition)
+    public Achievement(string k, string n, Predicate<Player> condition)
     {
         key = k;
         name = n;
@@ -60,7 +59,7 @@ public class AchievementManager : MonoBehaviour
         if (reviewMode) return;
         foreach(Achievement a in achievements)
     {
-            if (!a.wasCompleted && a.isRequirementMet())
+            if (!a.wasCompleted && a.isRequirementMet(player))
         {
                 Debug.Log("Achievement " + a.name + " done!");
                 a.wasCompleted = true;
@@ -99,7 +98,7 @@ public class AchievementManager : MonoBehaviour
         achievements[0] = new Achievement(
             "Achievement1",
             "Almost there!", 
-            () => {
+            (Player player) => {
                 return player.coinsLeft == 1 && player.endLevel && !player.isAlive;
             });
 
@@ -108,7 +107,7 @@ public class AchievementManager : MonoBehaviour
         achievements[1] = new Achievement(
             "Achievement2",
             "Quick and Painless",
-            () => {
+            (Player player) => {
                 return Time.timeSinceLevelLoad <= quickDeathMaxTime && player.endLevel && !player.isAlive;
             });
 
@@ -117,7 +116,7 @@ public class AchievementManager : MonoBehaviour
         achievements[2] = new Achievement(
             "Achievement3",
             "Slow And Steady",
-            () => {
+            (Player player) => {
                 return Time.timeSinceLevelLoad >= slowLevelCompletionTime && player.canFinishLevel && player.endLevel && player.isAlive;
             });
 
@@ -126,7 +125,7 @@ public class AchievementManager : MonoBehaviour
         achievements[3] = new Achievement(
             "Achievement4",
             "As Swift as the Wind",
-            () => {
+            (Player player) => {
                 return Time.timeSinceLevelLoad <= fastLevelCompletionTime && player.canFinishLevel && player.endLevel && player.isAlive;
             });
 
@@ -135,7 +134,7 @@ public class AchievementManager : MonoBehaviour
         achievements[4] = new Achievement(
             "Achievement5",
             "Careful Observer",
-            () => {
+            (Player player) => {
                 return Time.timeSinceLevelLoad >= minWaitTime && player.GetCoins() == 0 && player.isAlive;
             });
 
