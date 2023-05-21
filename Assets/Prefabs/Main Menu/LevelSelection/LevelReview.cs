@@ -30,16 +30,13 @@ public class LevelReview : MonoBehaviour
         thisLevel = levelManager.GetLevel(index);
         if (thisLevel == null) return;
         title.text = thisLevel.name;
+        canPlay = thisLevel.wasCompleted;
+        background.color = thisLevel.wasCompleted ? done : notDone;
 
         if (levelManager.GetNextLevelToPlay() == thisLevel)
         {
-            background.color = almostDone;
+            background.color = thisLevel.wasCompleted ? done : almostDone;
             canPlay = true;
-        }
-        else
-        {
-            background.color = thisLevel.wasCompleted ? done : notDone;
-            canPlay = thisLevel.wasCompleted;
         }
     }
 

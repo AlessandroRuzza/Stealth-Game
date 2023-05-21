@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 enum SceneIndexes
 {
     mainMenu,
+    settingsMenu,
     achievementsReview,
     levelSelection,
     level1,
-    level2
+    level2,
+    level3,
+    level4
 }
-// Scene 0 is the main menu
-// Scene 1 is the achievement menu
-// Scene 2 is the first level
 
 public class StartButton : MonoBehaviour
 {
@@ -26,5 +26,10 @@ public class StartButton : MonoBehaviour
             SceneManager.LoadScene((int)SceneIndexes.levelSelection, LoadSceneMode.Single);
         else
             playerNameErrorWindow.SetActive(true);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 }
