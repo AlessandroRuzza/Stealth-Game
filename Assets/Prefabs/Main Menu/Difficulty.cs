@@ -12,11 +12,6 @@ public class Difficulty : MonoBehaviour
     [SerializeField] Color selectedColor;
     Image image;
 
-    string playerFolderPath
-    {
-        get { return Application.persistentDataPath + "/" + PlayerPrefs.GetString(ConfirmName.keyPlayerName) + "/"; }
-    }
-
     public static Action reload = null;
 
     // State pattern for difficulty
@@ -36,8 +31,7 @@ public class Difficulty : MonoBehaviour
 
     void SetColor()
     {
-        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
-        if (difficulty == PlayerPrefs.GetInt(keyDifficulty) && playerName != "" && playerName != null)
+        if (difficulty == PlayerPrefs.GetInt(keyDifficulty) && Player.playerName != "" && Player.playerName != null)
         {
             image.color = selectedColor;
         }
@@ -49,8 +43,7 @@ public class Difficulty : MonoBehaviour
 
     public void SetDifficulty()
     {
-        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
-        if (playerName == null || playerName == "")
+        if (Player.playerName == null || Player.playerName == "")
             return;
 
         try
@@ -72,7 +65,7 @@ public class Difficulty : MonoBehaviour
             }
 
             // Save the selected difficulty
-            difficultyState.SaveDifficulty(playerFolderPath, difficulty);
+            difficultyState.SaveDifficulty(Player.folderPath, difficulty);
         }
         catch (IOException e)
         {

@@ -7,8 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public const string keyPlayerName = "playerName";
     public static Player self;
     public static Action<int> useEye;
+    public static string playerName
+    {
+        get { return PlayerPrefs.GetString(keyPlayerName); }
+    }
+    public static string folderPath
+    {
+        get { return Application.persistentDataPath + "/" + playerName + "/"; }
+    }
 
     public Animator animator;
 
@@ -20,11 +29,6 @@ public class Player : MonoBehaviour
     {
         get { return goal - coinsPickedUp; }
     }
-    string playerName;
-    string playerFolderPath
-    {
-        get { return Application.persistentDataPath + "/" + playerName + "/"; }
-    }
 
     public bool endLevel;
     public bool isAlive;
@@ -35,7 +39,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
         if (self != null)
         {
             Debug.LogError("Multiple Players are present");
@@ -55,7 +58,8 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {/*
+    {
+        /*
         if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene((int)SceneIndexes.mainMenu, LoadSceneMode.Single);
@@ -107,7 +111,7 @@ public class Player : MonoBehaviour
     {
         if (endLevel) return;
         Debug.Log("You won! Great job. Press R to restart or Space to continue");
-        File.Create(playerFolderPath + SceneManager.GetActiveScene().name).Close();
+        File.Create(folderPath + SceneManager.GetActiveScene().name).Close();
         EndLevel();
     }
 

@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using System.Linq.Expressions;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Achievement
@@ -31,19 +27,12 @@ public class AchievementManager : MonoBehaviour
     Achievement[] achievements;
     [SerializeField] bool reviewMode;
     Player player;
-    string playerName;
-    string playerFolderPath
-    {
-        get { return Application.persistentDataPath + "/" + playerName + "/"; }
-    }
     [SerializeField] AchievementWindow achievementWindow;
 
     private void Awake()
     {
         if (self != null) Debug.LogError("More than 1 achievement manager!");
         self = this;
-
-        playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
 
         achievements = new Achievement[NUM_OF_ACHIEVEMENTS];
         InitAchievements();
@@ -140,7 +129,7 @@ public class AchievementManager : MonoBehaviour
 
         foreach (Achievement a in achievements)
         {
-            a.wasCompleted = File.Exists(playerFolderPath + a.key);
+            a.wasCompleted = File.Exists(Player.folderPath + a.key);
         }
     }
 
@@ -148,13 +137,13 @@ public class AchievementManager : MonoBehaviour
     {
         foreach (Achievement a in achievements)
         {
-            File.Delete(playerFolderPath + a.key);
+            File.Delete(Player.folderPath + a.key);
         }
     }
 
     void CompleteAchievement(Achievement a)
     {
         a.wasCompleted = true;
-        File.Create(playerFolderPath + a.key);
+        File.Create(Player.folderPath + a.key);
     }
 }

@@ -11,10 +11,6 @@ public class PlayerNameDropdown : MonoBehaviour
     List<string> listOfPlayers; 
     TMP_Dropdown dropdown;
     [SerializeField] TMP_InputField textField;
-    string playerName
-    {
-        get { return PlayerPrefs.GetString(ConfirmName.keyPlayerName); }
-    }
 
     private void Awake()
     {
@@ -39,25 +35,36 @@ public class PlayerNameDropdown : MonoBehaviour
 
     public void RefreshPlayerSelected()
     {
-        int index = dropdown.options.FindIndex((TMP_Dropdown.OptionData optionData) => (optionData.text == playerName));
+        int index = dropdown.options.FindIndex((TMP_Dropdown.OptionData optionData) => (optionData.text == Player.playerName));
         dropdown.value = index;
         dropdown.RefreshShownValue();
     }
 
-    public void UpdateTextField()
+    public void LoadPlayerData()
+    {
+        UpdateTextField();
+        UpdateKeyBinds();
+    }
+
+    void UpdateTextField()
     {
         textField.text = dropdown.options[dropdown.value].text;
-        PlayerPrefs.SetString(ConfirmName.keyPlayerName, textField.text);
+        PlayerPrefs.SetString(Player.keyPlayerName, textField.text);
 
-        int difficulty=2;   // default difficutly is normal
-        if (File.Exists(Application.persistentDataPath + "/" + playerName + "/Difficulty_1")) 
+        int difficulty=2;   // default difficulty is normal
+        if (File.Exists(Application.persistentDataPath + "/" + Player.playerName + "/Difficulty_1")) 
             difficulty = 1;
-        else if (File.Exists(Application.persistentDataPath + "/" + playerName + "/Difficulty_3"))
+        else if (File.Exists(Application.persistentDataPath + "/" + Player.playerName + "/Difficulty_3"))
             difficulty = 3;
 
         PlayerPrefs.SetInt(Difficulty.keyDifficulty, difficulty);
 
         if (Difficulty.reload != null)
             Difficulty.reload();
+    }
+
+    void UpdateKeyBinds()
+    {
+        KeyBinds.LoadAll();
     }
 }

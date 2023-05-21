@@ -9,8 +9,7 @@ public class AchievementButton : MonoBehaviour
 
     public void LoadAchiementReview()
     {
-        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
-        if (playerName != "" && playerName != null)
+        if (Player.playerName != "" && Player.playerName != null)
             SceneManager.LoadScene((int)SceneIndexes.achievementsReview, LoadSceneMode.Single);
         else
             playerNameErrorWindow.SetActive(true);

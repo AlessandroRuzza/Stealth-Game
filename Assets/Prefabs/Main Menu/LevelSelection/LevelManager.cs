@@ -28,18 +28,12 @@ public class LevelManager : MonoBehaviour
 
     public const int NUM_OF_LEVELS=4;
     Level[] levels;
-    string playerName;
-    string playerFolderPath
-    {
-        get { return Application.persistentDataPath + "/" + playerName + "/"; }
-    }
 
     private void Awake()
     {
         if (self != null) Debug.LogError("More than 1 achievement manager!");
         self = this;
 
-        playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
 
         levels = new Level[NUM_OF_LEVELS];
         InitLevels();
@@ -100,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
         foreach (Level l in levels)
         {
-            l.wasCompleted = File.Exists(playerFolderPath + l.key);
+            l.wasCompleted = File.Exists(Player.folderPath + l.key);
         }
     }
 
@@ -108,7 +102,7 @@ public class LevelManager : MonoBehaviour
     {
         foreach (Level l in levels)
         {
-            File.Delete(playerFolderPath + l.key);
+            File.Delete(Player.folderPath + l.key);
         }
     }
 }

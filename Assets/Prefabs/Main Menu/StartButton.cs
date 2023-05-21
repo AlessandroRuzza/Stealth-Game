@@ -21,10 +21,10 @@ public class StartButton : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        string playerName = PlayerPrefs.GetString(ConfirmName.keyPlayerName);
-        if(playerName != "" && playerName != null)
+        if(Player.playerName != "" && Player.playerName != null)
             SceneManager.LoadScene((int)SceneIndexes.levelSelection, LoadSceneMode.Single);
         else
             playerNameErrorWindow.SetActive(true);
     }
+
 }

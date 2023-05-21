@@ -8,33 +8,25 @@ using System;
 
 public class ConfirmName : MonoBehaviour
 {
-    public const string keyPlayerName = "playerName";
-    string playerName; 
-    string playerFolderPath
-    {
-        get { return Application.persistentDataPath + "/" + playerName; }
-    }
     [SerializeField] TMP_InputField nameInputField;
     [SerializeField] PlayerNameDropdown nameDropdown;
 
     private void Start()
     {
-        playerName = PlayerPrefs.GetString(keyPlayerName);
-        if(playerName != null)
+        if(Player.playerName != null)
         {
-            nameInputField.text = playerName;
+            nameInputField.text = Player.playerName;
         }
     }
 
     public void SaveNameToPrefs()
     {
-        playerName = nameInputField.text;
-        PlayerPrefs.SetString(keyPlayerName, playerName);
+        PlayerPrefs.SetString(Player.keyPlayerName, Player.playerName);
         PlayerPrefs.Save();
 
-        if (!Directory.Exists(playerFolderPath))
+        if (!Directory.Exists(Player.folderPath))
         {
-            Directory.CreateDirectory(playerFolderPath);
+            Directory.CreateDirectory(Player.folderPath);
             nameDropdown.RefreshPlayerList();
         }
         nameDropdown.RefreshPlayerSelected();
