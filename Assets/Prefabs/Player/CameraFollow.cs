@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && timerGodView<0 && !Player.self.endLevel && (godViewUsageTimes < maxGodViewUsage || maxGodViewUsage<0))
+        if (Input.GetKeyDown(KeyBinds.godView) && timerGodView<0 && !Player.self.endLevel && (godViewUsageTimes < maxGodViewUsage || maxGodViewUsage<0))
         {
             GodView(true);
             timerGodView = 0;

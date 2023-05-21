@@ -1,20 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class KeyBindButton : MonoBehaviour
 {
-    public string action; // The action that this keybind controls, e.g. "MoveUp"
+    const string waitingText = "Press any key...";
     private Button button;
-    private Text buttonText;
+    private TextMeshProUGUI buttonText;
 
     private void Start()
     {
         button = GetComponent<Button>();
-        buttonText = GetComponentInChildren<Text>();
+        buttonText = GetComponentInChildren<TextMeshProUGUI>();
 
         // Load the current keybind
-        buttonText.text = PlayerPrefs.GetString(action, "W"); // Default to "W"
+        buttonText.text = KeyBinds.moveUp.ToString();
 
         button.onClick.AddListener(StartRebind);
     }
@@ -22,6 +23,7 @@ public class KeyBindButton : MonoBehaviour
     private void StartRebind()
     {
         StartCoroutine(WaitForKey());
+        buttonText.text = waitingText;
     }
 
     private IEnumerator WaitForKey()
@@ -35,8 +37,9 @@ public class KeyBindButton : MonoBehaviour
         {
             if (Input.GetKeyDown(keyCode))
             {
-                PlayerPrefs.SetString(action, keyCode.ToString());
+                KeyBinds.moveUp = keyCode;
                 buttonText.text = keyCode.ToString();
+                KeyBinds.SaveAll();
                 break;
             }
         }

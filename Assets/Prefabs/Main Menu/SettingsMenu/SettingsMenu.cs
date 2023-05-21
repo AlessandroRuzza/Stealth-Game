@@ -26,9 +26,10 @@ public class SettingsMenu : MonoBehaviour
     {
         if(!sceneLoaded && SceneManager.sceneCount==1)
         {
+            KeyBinds.LoadAll();
             SceneManager.LoadScene(settingsMenuIndex, LoadSceneMode.Additive);
             settingsMenu = SceneManager.GetSceneAt(SceneManager.sceneCount-1);
-            SceneManager.SetActiveScene(settingsMenu);
+            //SceneManager.SetActiveScene(settingsMenu);
             sceneLoaded = true;
         }
 

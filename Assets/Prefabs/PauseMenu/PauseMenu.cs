@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && Player.self.isAlive)
+        if (Input.GetKeyDown(KeyBinds.pause) && Player.self.isAlive)
         {
 			Debug.Log("Esc Detected");
 			Debug.Log(isPaused);

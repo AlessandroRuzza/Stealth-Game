@@ -114,6 +114,7 @@ public class PlayerMover : MonoBehaviour
         rigidbody2D.freezeRotation = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         commandInvoker = new CommandInvoker();
+        KeyBinds.LoadAll();
     }
     void Update()
     {
@@ -134,13 +135,13 @@ public class PlayerMover : MonoBehaviour
         {
             force = Vector2.zero;
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyBinds.moveUp))
                 commandInvoker.AddCommand(new MoveUpCommand(this));
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyBinds.moveDown))
                 commandInvoker.AddCommand(new MoveDownCommand(this));
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyBinds.moveLeft))
                 commandInvoker.AddCommand(new MoveLeftCommand(this));
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyBinds.moveRight))
                 commandInvoker.AddCommand(new MoveRightCommand(this));
 
             commandInvoker.ExecuteCommands();

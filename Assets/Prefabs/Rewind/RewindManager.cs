@@ -17,9 +17,9 @@ public class RewindManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyBinds.rewind))
             StartRewind();
-        if(Input.GetKeyUp(KeyCode.R))
+        if(Input.GetKeyUp(KeyBinds.rewind))
             StopRewind();
     }
 
