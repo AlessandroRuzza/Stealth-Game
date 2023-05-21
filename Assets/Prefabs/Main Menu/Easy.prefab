@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8489337605328390918}
   - component: {fileID: 8489337605328390937}
   - component: {fileID: 8489337605328390916}
+  - component: {fileID: 6441458866968858698}
   m_Layer: 5
   m_Name: Easy
   m_TagString: Untagged
@@ -284,3 +285,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 1
   selectedColor: {r: 0.45749205, g: 0.745283, b: 0, a: 1}
+--- !u!114 &6441458866968858698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489337605328390939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4494350212a2d354ca309e31d6a4853c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultScale: {x: 1.39, y: 1.39, z: 1.39}
+  hoverScale: {x: 1.6, y: 1.6, z: 1.6}
+  duration: 0.2
