@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ResetKeybindsButton : MonoBehaviour
 {
-    KeyBindButton[] buttons;
-    void Awake()
-    {
-        buttons = FindObjectsOfType<KeyBindButton>();
-    }
     public void ResetDefaultValues()
     {
         KeyBinds.SetDefaultValues();
-        foreach(KeyBindButton x in buttons)
+        foreach(KeyBindButton x in KeyBindButton.instances)
         {
             x.LoadKeybind();
         }

@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 enum KeybindButtonID
 {
@@ -18,6 +17,7 @@ enum KeybindButtonID
 public class KeyBindButton : MonoBehaviour
 {
     const string waitingText = "Press any key...";
+    public static KeyBindButton[] instances = new KeyBindButton[System.Enum.GetValues(typeof(KeybindButtonID)).Length];
     private Button button;
     private TextMeshProUGUI buttonText;
     [SerializeField] KeybindButtonID keybindID;
@@ -26,6 +26,8 @@ public class KeyBindButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
+        instances[(int)keybindID] = this;
+        SettingsMenu.self.canExit = true;
         LoadKeybind();
     }
 
