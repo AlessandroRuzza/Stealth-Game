@@ -32,19 +32,6 @@ public class MusicManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void ToggleMusic()
-    {
-        // If music is playing, pause it, otherwise unpause it
-        if (audioSource.isPlaying)
-        {
-            audioSource.Pause();
-        }
-        else
-        {
-            audioSource.UnPause();
-        }
-    }
-
     public void SetVolume(float volume)
     {
         // Set the volume. The passed volume should be in the range [0, 1]
