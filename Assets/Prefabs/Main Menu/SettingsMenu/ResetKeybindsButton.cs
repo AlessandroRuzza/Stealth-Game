@@ -11,5 +11,6 @@ public class ResetKeybindsButton : MonoBehaviour
         {
             x.LoadKeybind();
         }
+        StopAllCoroutines();
     }
 }

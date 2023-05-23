@@ -14,14 +14,15 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] bool turnClockwise;
     [SerializeField] float anglePrecision;
     [SerializeField] float minAngleThreshold;
-    int counter;
-    int travelDirection = 1;
+    public int counter;
+    public int travelDirection = 1;
     [SerializeField] [Tooltip("Do not set this above pathNode length")] 
         int startNode;
     Vector2 moveDirection;
-    Vector2 pathDirection;
+    public Vector2 pathDirection;
     bool isLoop=false;
-    float angle, cumulativeAngle = 0f, totalAngle=0f;
+    float angle;
+    public float cumulativeAngle = 0f, totalAngle = 0f;
 
     public Animator animator;
     void Awake()
@@ -59,15 +60,13 @@ public class EnemyMover : MonoBehaviour
 
     void Update()
     {
-        if (isPathEmpty) return;
+        if (isPathEmpty || RewindManager.isRewinding) return;
         moveDirection = pathNodes[counter].position - transform.position;
 
-	angle = 0f;
+	    angle = 0f;
         float remainingAngle = Vector2.SignedAngle(transform.up, pathDirection);
         bool headingOK = cumulativeAngle >= Mathf.Abs(totalAngle) - anglePrecision;
-        bool isInBounds_2Positions = (counter > 1 && travelDirection == 1) || (counter < pathNodes.Length - 2 && travelDirection == -1);
-        bool isComingFromEndNode = ((counter == 1 && travelDirection == 1) || (counter == pathNodes.Length - 2 && travelDirection == -1));
-
+       
         if (!headingOK)
         {
             angle = totalAngle * Time.deltaTime * rotationSpeed;

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class CameraFollow : MonoBehaviour
 {
     
     [SerializeField] Camera playerCamera;
     [SerializeField] Camera godViewCamera;
+    [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] Canvas worldSpaceCanvas;
+    Camera activeCamera;
     float timerGodView;
     const float maxGodViewTime = 5f;
     int godViewUsageTimes;
@@ -20,6 +24,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
+        SetActiveCamera(playerCamera);
         playerCamera.orthographicSize = sizeZoom;
         //Switch for god view
         playerCamera.transform.position = transform.position + Vector3.back * 200;
@@ -32,7 +37,6 @@ public class CameraFollow : MonoBehaviour
             maxGodViewUsage = 3;
         if (difficulty == 3)        // hard
             maxGodViewUsage = 0 ;
-
     }
 
     // Update is called once per frame
@@ -65,5 +69,13 @@ public class CameraFollow : MonoBehaviour
     {
         godViewCamera.depth = playerCamera.depth - 1;
         if (enable) godViewCamera.depth += 2;
+        SetActiveCamera(enable ? godViewCamera : playerCamera);
+    }
+
+    void SetActiveCamera(Camera camera)
+    {
+        activeCamera = camera;
+        videoPlayer.targetCamera = camera;
+        //worldSpaceCanvas.worldCamera = camera;
     }
 }

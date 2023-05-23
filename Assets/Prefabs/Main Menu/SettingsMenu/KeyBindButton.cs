@@ -18,13 +18,12 @@ public class KeyBindButton : MonoBehaviour
 {
     const string waitingText = "Press any key...";
     public static KeyBindButton[] instances = new KeyBindButton[System.Enum.GetValues(typeof(KeybindButtonID)).Length];
-    private Button button;
+    KeyCode prevKey;
     private TextMeshProUGUI buttonText;
     [SerializeField] KeybindButtonID keybindID;
 
     private void Start()
     {
-        button = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         instances[(int)keybindID] = this;
         SettingsMenu.self.canExit = true;
@@ -33,6 +32,8 @@ public class KeyBindButton : MonoBehaviour
 
     public void StartRebind()
     {
+        if (!SettingsMenu.self.canExit) return;
+        prevKey = GetKeyFromKeybinds();
         StartCoroutine(WaitForKey());
         buttonText.text = waitingText;
     }
@@ -49,13 +50,33 @@ public class KeyBindButton : MonoBehaviour
         {
             if (Input.GetKeyDown(keyCode))
             {
-                KeyBinds.moveUp = keyCode;
-                buttonText.text = keyCode.ToString();
-                SaveKeybind(keyCode);
-                SettingsMenu.self.canExit = true;
+                if (CheckForDoubles(keyCode))
+                {
+                    yield return null; 
+                    StartCoroutine(WaitForKey());
+                }
+                else
+                {
+                    SaveKeybind(keyCode);
+                    buttonText.text = keyCode.ToString();
+                    SettingsMenu.self.canExit = true;
+                }
                 break;
             }
         }
+    }
+
+    bool CheckForDoubles(KeyCode key)   // return true if it detects a double assignment of keybind
+    {
+        if (key == prevKey) return false;
+        foreach (KeyBindButton x in instances)
+        {
+            if (x.GetKeyFromKeybinds() == key)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void SaveKeybind(KeyCode key)
@@ -89,30 +110,37 @@ public class KeyBindButton : MonoBehaviour
     }
     public void LoadKeybind()
     {
+        KeyCode key = GetKeyFromKeybinds();
+        buttonText.text = key.ToString();
+    }
+    KeyCode GetKeyFromKeybinds()
+    {
+        KeyCode key;
         switch (keybindID)
         {
             default:
             case KeybindButtonID.moveUp:
-                buttonText.text = KeyBinds.moveUp.ToString();
+                key = KeyBinds.moveUp;
                 break;
             case KeybindButtonID.moveDown:
-                buttonText.text = KeyBinds.moveDown.ToString();
+                key = KeyBinds.moveDown;
                 break;
             case KeybindButtonID.moveLeft:
-                buttonText.text = KeyBinds.moveLeft.ToString();
+                key = KeyBinds.moveLeft;
                 break;
             case KeybindButtonID.moveRight:
-                buttonText.text = KeyBinds.moveRight.ToString();
+                key = KeyBinds.moveRight;
                 break;
             case KeybindButtonID.pause:
-                buttonText.text = KeyBinds.pause.ToString();
+                key = KeyBinds.pause;
                 break;
             case KeybindButtonID.godView:
-                buttonText.text = KeyBinds.godView.ToString();
+                key = KeyBinds.godView;
                 break;
             case KeybindButtonID.rewind:
-                buttonText.text = KeyBinds.rewind.ToString();
+                key = KeyBinds.rewind;
                 break;
         }
+        return key;
     }
 }

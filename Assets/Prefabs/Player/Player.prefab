@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b4558e873a054f9f0becbd4c203cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 0}
+  manageVideo: 1
 --- !u!50 &1129677586
 Rigidbody2D:
   serializedVersion: 4
@@ -214,5 +216,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   godViewCamera: {fileID: 0}
+  videoPlayer: {fileID: 0}
   sizeZoom: 5.69
   sizeNotZoom: 12.04547

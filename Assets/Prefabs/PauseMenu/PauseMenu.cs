@@ -9,10 +9,12 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused;
     [SerializeField] Camera godViewCamera;
     [SerializeField] Camera playerCamera;
+    bool wasGodview;
 
     void Awake()
     {
 		isPaused = false;
+        wasGodview = false;
         pauseMenu.SetActive(false);
     }
 
@@ -20,8 +22,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyBinds.pause) && Player.self.isAlive)
         {
-			Debug.Log("Esc Detected");
-			Debug.Log(isPaused);
             if (isPaused)
             {
                 ResumeGame();
@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        wasGodview = godViewCamera.depth > playerCamera.depth;
         godViewCamera.depth = playerCamera.depth - 1;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -43,10 +44,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-
         if(Player.self.isAlive)
         {
             Time.timeScale = 1f;
+        }
+        if (wasGodview)
+        {
+            godViewCamera.depth = playerCamera.depth + 1;
         }
         pauseMenu.SetActive(false);
         isPaused = false;

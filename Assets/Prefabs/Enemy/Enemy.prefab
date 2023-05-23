@@ -263,6 +263,8 @@ MonoBehaviour:
   turnClockwise: 1
   anglePrecision: 1
   minAngleThreshold: 1
+  counter: 0
+  travelDirection: 1
   startNode: 0
   animator: {fileID: 8295390300216524273}
 --- !u!114 &8498672334469211301
@@ -277,6 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b4558e873a054f9f0becbd4c203cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 0}
+  manageVideo: 0
+  isEnemy: 1
 --- !u!33 &3535306984944098947
 MeshFilter:
   m_ObjectHideFlags: 0
