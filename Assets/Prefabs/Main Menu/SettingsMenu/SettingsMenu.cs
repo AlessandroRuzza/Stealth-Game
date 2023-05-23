@@ -3,22 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public static SettingsMenu self;
     bool sceneLoaded;
+    public bool canExit;
     int settingsMenuIndex;
     Scene settingsMenu;
 
     void Awake()
     {
+        if (self != null) Debug.LogError("Multiple setting menus! " + name);
+        else self = this;
         sceneLoaded = false;
         settingsMenuIndex = (int)SceneIndexes.settingsMenu;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.sceneCount>1)
+        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.sceneCount>1 && canExit)
         {
-            SceneManager.UnloadSceneAsync(settingsMenu);
-            sceneLoaded = false;
+            CloseSettingsSceneMenu();
         }
     }
     
@@ -32,6 +35,10 @@ public class SettingsMenu : MonoBehaviour
             //SceneManager.SetActiveScene(settingsMenu);
             sceneLoaded = true;
         }
-
+    }
+    public void CloseSettingsSceneMenu()
+    {
+        SceneManager.UnloadSceneAsync(settingsMenu);
+        sceneLoaded = false;
     }
 }
