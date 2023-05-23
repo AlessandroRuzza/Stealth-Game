@@ -13,7 +13,7 @@ public class ScaleOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void Update()
     {
-        float step = (isHovering ? hoverScale : defaultScale).x / duration * Time.deltaTime;
+        float step = (isHovering ? hoverScale : defaultScale).x / duration * Time.unscaledDeltaTime;
         transform.localScale = Vector3.MoveTowards(transform.localScale, isHovering ? hoverScale : defaultScale, step);
     }
 
