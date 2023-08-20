@@ -105,11 +105,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3535306984944098950, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: m_Name
-      value: Enemy1 (1)
+      value: Swift Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3535306984944098951, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: coneAngle
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535306984944098951, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
+      propertyPath: timeLimit
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3535306984944098951, guid: e3a82c3be1a22a94f8235b2f258174b4, type: 3}
       propertyPath: raycastLength

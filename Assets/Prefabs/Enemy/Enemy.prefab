@@ -239,11 +239,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae06d02761f6aca47b87a73076d40c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceMaterial: {fileID: 2100000, guid: 467af35a16bcb2f4b8cf38cebb977a33, type: 2}
   raycastLength: 5
   coneAngle: 15
   rayCount: 40
   debugLog: 0
   debugRay: 0
+  findRate: 1
+  timeLimit: 0.25
 --- !u!114 &1985462688609083693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +269,9 @@ MonoBehaviour:
   counter: 0
   travelDirection: 1
   startNode: 0
+  pathDirection: {x: 0, y: 0}
+  cumulativeAngle: 0
+  totalAngle: 0
   animator: {fileID: 8295390300216524273}
 --- !u!114 &8498672334469211301
 MonoBehaviour:
