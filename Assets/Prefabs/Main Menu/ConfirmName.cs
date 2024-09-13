@@ -21,7 +21,7 @@ public class ConfirmName : MonoBehaviour
 
     public void SaveNameToPrefs()
     {
-        PlayerPrefs.SetString(Player.keyPlayerName, Player.playerName);
+        PlayerPrefs.SetString(Player.keyPlayerName, nameInputField.text);
         PlayerPrefs.Save();
 
         if (!Directory.Exists(Player.folderPath))
